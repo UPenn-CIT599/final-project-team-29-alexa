@@ -1,0 +1,16 @@
+1. Please refer to https://www.youtube.com/watch?v=BB3wwxgqPOU on how to set up both the AWS server and testing environment.
+
+2. Current function
+	- Identify the word of interest 
+	- Put the word of interest into the response and let Alexa read out
+
+
+3. To do
+	- Generate more Utterances for either meaning or spelling 
+	- Find a sample dictionary (start with small size?)
+	- Use Java SDK instead
+	- Substitute the hard-coded meaning and spelling with dictionary contents
+
+
+4. Maybe?
+	- Word recommender if the word is not found in the dictionary?
