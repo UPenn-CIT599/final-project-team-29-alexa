@@ -696,7 +696,7 @@ exports.handler = skillBuilder
 
 
 // End of Skill code -------------------------------------------------------------
-// Static Language Model for reference
+// Static Language Model for reference: 
 
 const model = {
   "interactionModel": {
@@ -725,12 +725,17 @@ const model = {
         },
         {
           "name": "getSpelling",
-          "slots": [],
-          "samples": [
-            "I don't know the spelling of",
-            "how to spell"
-          ]
-        },
+           "slots": [
+                {
+                    "name": "word",
+                    "type": "Words"
+                }
+             ],
+            "samples": [
+                "I don't know the spelling of {word}",
+                "how to spell {word}"
+            ]
+         },
         {
           "name": "getMeaning",
           "slots": [
