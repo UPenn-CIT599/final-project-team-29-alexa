@@ -43,6 +43,7 @@ const maxHistorySize = 20; // remember only latest 20 intents
 
 // 1. Intent Handlers =============================================
 
+// Scenario: Cannot understand user voice input
 const AMAZON_FallbackIntent_Handler =  {
     canHandle(handlerInput) {
         const request = handlerInput.requestEnvelope.request;
@@ -62,6 +63,7 @@ const AMAZON_FallbackIntent_Handler =  {
     },
 };
 
+// Scenario: Cancel current request and wait for new ones
 const AMAZON_CancelIntent_Handler =  {
     canHandle(handlerInput) {
         const request = handlerInput.requestEnvelope.request;
@@ -82,6 +84,7 @@ const AMAZON_CancelIntent_Handler =  {
     },
 };
 
+// Scenario: User ask for help, give sample utterances
 const AMAZON_HelpIntent_Handler =  {
     canHandle(handlerInput) {
         const request = handlerInput.requestEnvelope.request;
@@ -113,6 +116,7 @@ const AMAZON_HelpIntent_Handler =  {
     },
 };
 
+// Scenario: Stop the program
 const AMAZON_StopIntent_Handler =  {
     canHandle(handlerInput) {
         const request = handlerInput.requestEnvelope.request;
@@ -133,6 +137,7 @@ const AMAZON_StopIntent_Handler =  {
     },
 };
 
+//Scenario: Navigate back home -> not used
 const AMAZON_NavigateHomeIntent_Handler =  {
     canHandle(handlerInput) {
         const request = handlerInput.requestEnvelope.request;
@@ -153,6 +158,8 @@ const AMAZON_NavigateHomeIntent_Handler =  {
     },
 };
 
+// Scenario: Compare user input with saved utterances -> getSpelling
+// Output: The complete answer containing the word heard and its spelling
 const getSpelling_Handler =  {
     canHandle(handlerInput) {
         const request = handlerInput.requestEnvelope.request;
@@ -169,6 +176,8 @@ const getSpelling_Handler =  {
         
         say = `The word ${slotValues.word.heardAs} is spelled as: a, p, p, l, e `;
 
+        // Right now, Alex is able to repeat the word user said, but the spelling is hard coded as "apple"
+        // Next step: using .toCharArray() to separate the word into an array of letter and read one by one
 
         return responseBuilder
             .speak(say)
@@ -177,6 +186,8 @@ const getSpelling_Handler =  {
     },
 };
 
+// Scenario: Compare user input with saved utterances -> getMeaning
+// Output: The complete answer containing the word heard and its definition
 const getMeaning_Handler =  {
     canHandle(handlerInput) {
         const request = handlerInput.requestEnvelope.request;
@@ -199,6 +210,9 @@ const getMeaning_Handler =  {
           say = 'I didnt quite catch that name. What was it again?';
         }
 
+        // Right now, Alex is able to repeat the word user said, but the meaning is hard coded as "a kind of fruit"
+        // Next step: find a dictionary which maps words to its meaning, and substitute the hard coded part with the definition by looking for the word
+
         return responseBuilder
             .speak(say)
             .reprompt('try again, ' + say)
@@ -206,6 +220,7 @@ const getMeaning_Handler =  {
     },
 };
 
+// Scenario: Initial Alexa respond when this voiceDictionary skill is called
 const LaunchRequest_Handler =  {
     canHandle(handlerInput) {
         const request = handlerInput.requestEnvelope.request;
@@ -229,6 +244,7 @@ const LaunchRequest_Handler =  {
     },
 };
 
+// Scenario: Testing purpose, specify the error code when exiting
 const SessionEndedHandler =  {
     canHandle(handlerInput) {
         const request = handlerInput.requestEnvelope.request;
@@ -240,6 +256,7 @@ const SessionEndedHandler =  {
     }
 };
 
+// Scenario: Error handler
 const ErrorHandler =  {
     canHandle() {
         return true;
