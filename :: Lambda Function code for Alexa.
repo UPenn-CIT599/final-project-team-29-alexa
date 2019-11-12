@@ -1,5 +1,11 @@
 // Lambda Function code for Alexa.
-// Paste this into your index.js file. 
+// Author: Team 29
+// Notes for milestone: Vast majority is boilerplate code to make Alexa working. Intents "getMeaning" and "getSpelling" are original with comments explaning the feature already realized and some todos. 
+// Todo: 1. Find a dictionary that maps words to its definition
+//       2. Transfer to Java with Java SDK
+//       3. Save the dictionary as a dataset in AWS cloud
+//       4. Create a class to parse the word and its definition between Alexa and AWS
+//       5. (Optional) Create a word recommender if the word is not found in the dictionary. 
 
 const Alexa = require("ask-sdk");
 const https = require("https");
