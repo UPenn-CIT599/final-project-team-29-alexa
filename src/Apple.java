@@ -21,7 +21,7 @@ public class Apple {
 	
 	public void draw() {
 		PennDraw.setPenColor(red, green, blue);
-		PennDraw.filledCircle(position.x, position.y, radius);
+		PennDraw.filledCircle(xCoor, yCoor, radius);
 	}
 
 
