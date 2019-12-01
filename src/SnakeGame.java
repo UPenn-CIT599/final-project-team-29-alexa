@@ -1,14 +1,19 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class SnakeGame {
 
 	public static void main(String[] args) {
+		Random random = new Random();
 		PennDraw.setCanvasSize(500, 500);
 		PennDraw.setScale(0, 50);
 		PennDraw.enableAnimation(100);
 
 		ArrayList<BodyPart> body = new ArrayList<BodyPart>();
-		Apple apple;
+		BodyPart initial = new BodyPart(25, 25); 
+		body.add(initial);
+		
+		Apple apple = new Apple(random.nextInt(51), random.nextInt(51));
 		
 		while (!isGameOver(body)) {
 			PennDraw.clear();
@@ -19,15 +24,14 @@ public class SnakeGame {
 				o.draw();
 			}
 			
-			
-			//Draw apple location
-			
+			//Draw apple
+			apple.draw();
 			
 			//takes user instruction: direction(WASD), keep a copy of current head location,
 			//update next head location
 			
 			
-			//if eats(head coor = apple), apple becomes new head, all bodypart pushed back 1 index, create apple 
+			//if eats(head coor = apple), apple becomes new head, all bodypart pushed back 1 index, update apple 
 			//if no eats, all body parts replaced by index-1
 			
 			
