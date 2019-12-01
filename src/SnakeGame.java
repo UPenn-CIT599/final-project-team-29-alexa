@@ -14,21 +14,30 @@ public class SnakeGame {
 		body.add(initial);
 		
 		Apple apple = new Apple(random.nextInt(51), random.nextInt(51));
+		char input;
 		
 		while (!isGameOver(body)) {
 			PennDraw.clear();
 			
 			//Draw current body
 			PennDraw.clear();
-			for (BodyPart o: body) {
+			for (BodyPart o: body)
 				o.draw();
-			}
 			
 			//Draw apple
 			apple.draw();
 			
 			//takes user instruction: direction(WASD), keep a copy of current head location,
 			//update next head location
+			BodyPart currentHead = body.get(0);
+			char direction = 'd';
+			
+			if (PennDraw.hasNextKeyTyped()) {
+				input = Character.toLowerCase(PennDraw.nextKeyTyped());
+				direction = input; 
+			}
+			
+			
 			
 			
 			//if eats(head coor = apple), apple becomes new head, all bodypart pushed back 1 index, update apple 
