@@ -7,7 +7,7 @@ public class SnakeGame {
 		Random random = new Random();
 		PennDraw.setCanvasSize(500, 500);
 		PennDraw.setScale(0, 50);
-		PennDraw.enableAnimation(1000);
+		PennDraw.enableAnimation(10);
 
 		ArrayList<BodyPart> body = new ArrayList<BodyPart>();
 		BodyPart initial = new BodyPart(25, 25); 
@@ -18,6 +18,7 @@ public class SnakeGame {
 		Apple apple = new Apple(random.nextInt(51), random.nextInt(51));
 		char direction = 'd';
 		
+		//while (true) {
 		while (!isGameOver(body)) {
 			
 			//Draw current body and apple
@@ -27,8 +28,12 @@ public class SnakeGame {
 			apple.draw();
 			
 			//takes user instruction: direction(WASD), keep a copy of current head location,
-			//update next head location
 			ArrayList<BodyPart> currentHead = new ArrayList<BodyPart>(body);
+			//Test
+			for (BodyPart o: body)
+				System.out.println("Before direction: Body: xcoor is " + o.getxCoor() + ", ycoor is " + o.getyCoor());
+			for (BodyPart ko: currentHead)
+				System.out.println("Before direction: CurrentHead: xcoor is " + ko.getxCoor() + ", ycoor is " + ko.getyCoor());
 			
 			
 			//next head location
@@ -43,6 +48,12 @@ public class SnakeGame {
 				body.get(0).setyCoor(body.get(0).getyCoor()+1);
 			else if (direction == 's')
 				body.get(0).setyCoor(body.get(0).getyCoor()-1);
+			
+			//Test
+			for (BodyPart o: body)
+				System.out.println("After direction: Body: xcoor is " + o.getxCoor() + ", ycoor is " + o.getyCoor());
+			for (BodyPart ko: currentHead)
+				System.out.println("After direction: CurrentHead: xcoor is " + ko.getxCoor() + ", ycoor is " + ko.getyCoor());
 			
 			
 			//Every body section advance 1, by taking values from currentHead
@@ -61,8 +72,9 @@ public class SnakeGame {
 			
 			//Test region
 			System.out.println("direction is " + direction);
-			for (BodyPart o: body)
-				System.out.println("xcoor is " + o.getxCoor() + ", ycoor is " + o.getyCoor());
+			System.out.println("body coordination is ");
+			for (BodyPart jo: body)
+				System.out.println("xcoor is " + jo.getxCoor() + ", ycoor is " + jo.getyCoor());
 			System.out.println("end of loop");
 			
 			PennDraw.advance();
