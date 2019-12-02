@@ -14,13 +14,16 @@ public class SnakeGame {
 		BodyPart secondary = new BodyPart(24, 25);
 		body.add(initial);
 		body.add(secondary);
-		
+
 		Apple apple = new Apple(random.nextInt(51), random.nextInt(51));
 		char direction = 'd';
-		
-		//while (true) {
 		while (!isGameOver(body)) {
-			
+			try {
+				Thread.sleep(200);
+			} catch(InterruptedException ex) {
+				Thread.currentThread().interrupt();
+			}
+
 			//Draw current body and apple
 			PennDraw.clear();
 			for (BodyPart o: body)
@@ -28,6 +31,7 @@ public class SnakeGame {
 			apple.draw();
 			
 			//takes user instruction: direction(WASD), keep a copy of current head location,
+			//update next head location
 			ArrayList<BodyPart> currentHead = new ArrayList<BodyPart>(body);
 			//Test
 			for (BodyPart o: body)
@@ -41,43 +45,42 @@ public class SnakeGame {
 				direction = Character.toLowerCase(PennDraw.nextKeyTyped());
 			}
 			if (direction == 'd')
-				body.get(0).setxCoor(body.get(0).getxCoor()+1);
+				body.add(0, new BodyPart(body.get(0).getxCoor()+1, body.get(0).getyCoor()));
 			else if (direction == 'a')
-				body.get(0).setxCoor(body.get(0).getxCoor()-1);
+				body.add(0, new BodyPart(body.get(0).getxCoor()-1, body.get(0).getyCoor()));
 			else if (direction == 'w')
-				body.get(0).setyCoor(body.get(0).getyCoor()+1);
+				body.add(0, new BodyPart(body.get(0).getxCoor(), body.get(0).getyCoor()+1));
 			else if (direction == 's')
-				body.get(0).setyCoor(body.get(0).getyCoor()-1);
-			
+				body.add(0, new BodyPart(body.get(0).getxCoor(), body.get(0).getyCoor()-1));
+
+			//if eats(head coor = apple), apple becomes new head, all bodypart pushed back 1 index, update apple
+			//if no eats, all body parts replaced by index-1
+			if (body.get(0).getxCoor() != apple.getxCoor() || body.get(0).getyCoor() != apple.getyCoor()) {
+				body.remove(body.size() - 1);
+			} else {
+				apple = new Apple(random.nextInt(51), random.nextInt(51));
+			}
+
 			//Test
 			for (BodyPart o: body)
 				System.out.println("After direction: Body: xcoor is " + o.getxCoor() + ", ycoor is " + o.getyCoor());
 			for (BodyPart ko: currentHead)
 				System.out.println("After direction: CurrentHead: xcoor is " + ko.getxCoor() + ", ycoor is " + ko.getyCoor());
 			
-			
-			//Every body section advance 1, by taking values from currentHead
-			for (int j = 1; j < body.size(); j++) {
-				body.set(j, currentHead.get(j-1));
-			}
-			System.out.println("Current head xcoor is " + currentHead.get(0).getxCoor() + 
+			System.out.println("Current head xcoor is " + currentHead.get(0).getxCoor() +
 					", ycoor is " + currentHead.get(0).getyCoor());
 			body.set(1, currentHead.get(0));
 			
-			// if eats(head coor = apple), extend tail
-			if (currentHead.get(0).getxCoor() == apple.getxCoor() && currentHead.get(0).getyCoor() == apple.getyCoor()) {
-				body.add(currentHead.get(body.size()-1));
-			} 
-			
-			
+
 			//Test region
 			System.out.println("direction is " + direction);
 			System.out.println("body coordination is ");
 			for (BodyPart jo: body)
 				System.out.println("xcoor is " + jo.getxCoor() + ", ycoor is " + jo.getyCoor());
 			System.out.println("end of loop");
-			
+
 			PennDraw.advance();
+
 		}
 		
 		//Display GAME OVER
@@ -96,7 +99,7 @@ public class SnakeGame {
 		
 		//collision with walls
 		BodyPart head = body.get(0);
-		if (head.getxCoor() > 50 || head.getyCoor()>50 ||
+		if (head.getxCoor() > 50 || head.getyCoor() > 50 ||
 			head.getxCoor() < 0 || head.getyCoor() < 0) {
 			System.out.println("wall error");
 			return true;
