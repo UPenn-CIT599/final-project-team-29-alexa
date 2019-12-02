@@ -7,7 +7,7 @@ public class SnakeGame {
 		Random random = new Random();
 		PennDraw.setCanvasSize(500, 500);
 		PennDraw.setScale(0, 50);
-		PennDraw.enableAnimation(100);
+		PennDraw.enableAnimation(1000);
 
 		ArrayList<BodyPart> body = new ArrayList<BodyPart>();
 		BodyPart initial = new BodyPart(25, 25); 
@@ -19,20 +19,19 @@ public class SnakeGame {
 		char direction = 'd';
 		
 		while (!isGameOver(body)) {
-			PennDraw.clear();
 			
-			//Draw current body
+			//Draw current body and apple
 			PennDraw.clear();
 			for (BodyPart o: body)
 				o.draw();
-			
-			//Draw apple
 			apple.draw();
 			
 			//takes user instruction: direction(WASD), keep a copy of current head location,
 			//update next head location
-			BodyPart currentHead = body.get(0);
+			ArrayList<BodyPart> currentHead = new ArrayList<BodyPart>(body);
 			
+			
+			//next head location
 			if (PennDraw.hasNextKeyTyped()) {
 				direction = Character.toLowerCase(PennDraw.nextKeyTyped());
 			}
@@ -46,23 +45,31 @@ public class SnakeGame {
 				body.get(0).setyCoor(body.get(0).getyCoor()-1);
 			
 			
-			//if eats(head coor = apple), apple becomes new head, all bodypart pushed back 1 index, update apple 
-			//if no eats, all body parts replaced by index-1
-			for (int j = (body.size() - 1); j > 1; j--) 
-				body.set(j, body.get(j-1));
-			body.set(1, currentHead);
+			//Every body section advance 1, by taking values from currentHead
+			for (int j = 1; j < body.size(); j++) {
+				body.set(j, currentHead.get(j-1));
+			}
+			System.out.println("Current head xcoor is " + currentHead.get(0).getxCoor() + 
+					", ycoor is " + currentHead.get(0).getyCoor());
+			body.set(1, currentHead.get(0));
 			
-			if (currentHead.getxCoor() == apple.getxCoor() && currentHead.getyCoor() == apple.getyCoor()) {} 
-			else 
-				body.remove(body.size()-1);	
+			// if eats(head coor = apple), extend tail
+			if (currentHead.get(0).getxCoor() == apple.getxCoor() && currentHead.get(0).getyCoor() == apple.getyCoor()) {
+				body.add(currentHead.get(body.size()-1));
+			} 
 			
 			
+			//Test region
+			System.out.println("direction is " + direction);
+			for (BodyPart o: body)
+				System.out.println("xcoor is " + o.getxCoor() + ", ycoor is " + o.getyCoor());
+			System.out.println("end of loop");
 			
 			PennDraw.advance();
 		}
 		
 		//Display GAME OVER
-		
+		System.out.println("Game over");
 		
 	}
 
@@ -79,6 +86,7 @@ public class SnakeGame {
 		BodyPart head = body.get(0);
 		if (head.getxCoor() > 50 || head.getyCoor()>50 ||
 			head.getxCoor() < 0 || head.getyCoor() < 0) {
+			System.out.println("wall error");
 			return true;
 		}
 		
@@ -86,6 +94,9 @@ public class SnakeGame {
 		for (int i = 1; i < body.size(); i++) {
 			if (head.getxCoor() == body.get(i).getxCoor() && 
 				head.getyCoor() == body.get(i).getyCoor()) {
+//				System.out.println("itself error");
+//				System.out.println("head xcoor " + head.getxCoor() + "  ycoor " + head.getyCoor());
+//				System.out.println("body section " + i);
 				return true;
 			}
 		}
