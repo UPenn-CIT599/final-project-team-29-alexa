@@ -20,7 +20,7 @@ public class PlayerDirectionStore {
     }
 
     public int[] getPlayer2Direction()  {
-        switch (this.player1Direction) {
+        switch (this.player2Direction) {
             case 'j':
                 return new int[]{-1, 0};
             case 'l':
@@ -36,11 +36,47 @@ public class PlayerDirectionStore {
     public void updateDirection() {
         while (PennDraw.hasNextKeyTyped()) {
             char direction = Character.toLowerCase(PennDraw.nextKeyTyped());
-            if (direction == 'a' || direction == 's' || direction == 'w' || direction == 'd') {
-                this.player1Direction = direction;
-            }
-            if (direction == 'j' || direction == 'k' || direction == 'l' || direction == 'i') {
-                this.player2Direction = direction;
+            switch(direction) {
+                // Don't allow U-turn as we already have body there!
+                case 'a':
+                    if (this.player1Direction != 'd') {
+                        this.player1Direction = 'a';
+                    }
+                    break;
+                case 's':
+                    if (this.player1Direction != 'w') {
+                        this.player1Direction = 's';
+                    }
+                    break;
+                case 'w':
+                    if (this.player1Direction != 's') {
+                        this.player1Direction = 'w';
+                    }
+                    break;
+                case 'd':
+                    if (this.player1Direction != 'a') {
+                        this.player1Direction = 'd';
+                    }
+                    break;
+                case 'j':
+                    if (this.player2Direction != 'l') {
+                        this.player2Direction = 'j';
+                    }
+                    break;
+                case 'k':
+                    if (this.player2Direction != 'i') {
+                        this.player2Direction = 'k';
+                    }
+                    break;
+                case 'l':
+                    if (this.player2Direction != 'j') {
+                        this.player2Direction = 'l';
+                    }
+                    break;
+                case 'i':
+                    if (this.player2Direction != 'k') {
+                        this.player2Direction = 'i';
+                    }
             }
         }
     }
