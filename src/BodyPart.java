@@ -18,9 +18,9 @@ public class BodyPart {
 		
 	}
 	
-	
-	public void draw() {
-		PennDraw.setPenColor(red, green, blue);
+	public void drawWithColor(int[] color) {
+		// red, green, blue
+		PennDraw.setPenColor(color[0], color[1], color[2]);
 		PennDraw.filledCircle(xCoor, yCoor, radius);
 	}
 
