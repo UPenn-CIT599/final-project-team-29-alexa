@@ -35,6 +35,7 @@ public class SnakeGame {
 		Apple apple = new Apple(random.nextInt(51), random.nextInt(51));
 		PlayerDirectionStore directionStore = new PlayerDirectionStore();
 		GameDecider decider = new GameDecider(isSingerPlayer(mode));
+		AiDirectionDecider aiDecider = new AiDirectionDecider();
 
 		while (!decider.isGameOver(player1, player2)) {
 			try {
@@ -57,7 +58,12 @@ public class SnakeGame {
 			player1.addHead( player1.getHead().getxCoor() + player1Direction[0],
 					player1.getHead().getyCoor() + player1Direction[1]);
 			if (!isSingerPlayer(mode)) {
-				int[] player2Direction = directionStore.getPlayer2Direction();
+				int[] player2Direction;
+				if (mode == '2') {
+					player2Direction = directionStore.getPlayer2Direction();
+				} else {
+					player2Direction = aiDecider.getDirection(player1, player2, apple);
+				}
 				player2.addHead(player2.getHead().getxCoor() + player2Direction[0],
 						player2.getHead().getyCoor() + player2Direction[1]);
 			}
