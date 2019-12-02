@@ -1,3 +1,5 @@
+import sun.applet.Main;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -5,6 +7,25 @@ public class SnakeGame {
 
 	public static void main(String[] args) {
 		Random random = new Random();
+
+		// Open main menu for choosing gaming mode
+		// 1. Single player
+		// 2. Two players
+		// 3. Compete with AI
+		MainMenu.draw();
+		char mode = '0';
+		while (mode != '1' && mode != '2' && mode != '3') {
+			try {
+				Thread.sleep(200);
+			} catch(InterruptedException ex) {
+				Thread.currentThread().interrupt();
+			}
+			if (PennDraw.hasNextKeyTyped()) {
+				mode = PennDraw.nextKeyTyped();
+			}
+		}
+
+
 		PennDraw.setCanvasSize(500, 500);
 		PennDraw.setScale(0, 50);
 		PennDraw.enableAnimation(10);
@@ -69,8 +90,6 @@ public class SnakeGame {
 			
 			System.out.println("Current head xcoor is " + currentHead.get(0).getxCoor() +
 					", ycoor is " + currentHead.get(0).getyCoor());
-			body.set(1, currentHead.get(0));
-			
 
 			//Test region
 			System.out.println("direction is " + direction);
