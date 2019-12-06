@@ -1,8 +1,7 @@
 
 public class BodyPart {
-	int red = 255;
-	int green = 0, blue = 0;
-	vectorLocation position;
+//	int red = 255;
+//	int green = 0, blue = 0;
 	int radius = 1;
 	
 	private int xCoor, yCoor;
@@ -18,6 +17,10 @@ public class BodyPart {
 		
 	}
 	
+	/**
+	 * Create a circle with radius 1 unit and color with RGB Array
+	 * @param color
+	 */
 	public void drawWithColor(int[] color) {
 		// red, green, blue
 		PennDraw.setPenColor(color[0], color[1], color[2]);
