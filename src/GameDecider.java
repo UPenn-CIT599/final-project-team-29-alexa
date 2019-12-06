@@ -15,6 +15,15 @@ public class GameDecider {
        this.isSinglePlayer = isSinglePlayer;
     }
 
+    /**
+     * Determine whether the game over:
+     * 	Case 1: Single player -> hit wall or itself
+     * 	Case 2: Multi player -> one of them hit wall or itself
+     * 	Case 3: Multi player -> hit each other
+     * @param player1
+     * @param player2
+     * @return
+     */
     public boolean isGameOver(Player player1, Player player2) {
         if (this.isSinglePlayer) {
             return isSinglePlayerCollide(player1);
@@ -29,7 +38,12 @@ public class GameDecider {
         }
         return false;
     }
-
+    
+    /**
+     * Determine whether 1 player hit wall or itself -> End of game
+     * @param player
+     * @return
+     */
     public boolean isSinglePlayerCollide(Player player) {
         //collision with walls
         BodyPart head = player.getHead();
@@ -49,6 +63,12 @@ public class GameDecider {
         return false;
     }
 
+    /**
+     * Determine whether player 1 hit any section of player 2
+     * @param player
+     * @param component
+     * @return
+     */
     public boolean isTwoPlayersCollide(Player player, Player component) {
         BodyPart head = player.getHead();
 
