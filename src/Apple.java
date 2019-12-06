@@ -2,7 +2,6 @@
 public class Apple {
 	int green = 255;
 	int red = 0, blue = 0;
-	vectorLocation position;
 	int radius = 1;
 	
 	private int xCoor, yCoor;
