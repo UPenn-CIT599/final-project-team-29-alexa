@@ -32,7 +32,10 @@ public class PlayerDirectionStore {
         }
         return new int[]{-1, 0};
     }
-
+    
+    /**
+     * Multi player mode controller: WASD, IJKL
+     */
     public void updateDirection() {
         while (PennDraw.hasNextKeyTyped()) {
             char direction = Character.toLowerCase(PennDraw.nextKeyTyped());
