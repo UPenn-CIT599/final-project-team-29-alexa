@@ -1,3 +1,5 @@
+//QA conducted on 07 Dec by Alex Hui
+
 import java.util.Random;
 
 public class SnakeGame {
