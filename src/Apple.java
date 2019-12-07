@@ -1,5 +1,9 @@
 //QA conducted on 07 Dec by Alex Hui
 
+/**
+ * This Apple class contains code that determines size and x/y coordinates of the Apple (green dot).
+ */
+
 public class Apple {
 	int green = 255;
 	int red = 0, blue = 0;
