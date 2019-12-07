@@ -1,7 +1,7 @@
 //QA conducted on 07 Dec by Alex Hui
 
 /**
- * GameDecider contains the code for deciding whether game is over and who wins games
+ * This GameDecider class contains the code for deciding when the game is over and the logic used for who wins the game.
  */
 
 public class GameDecider {
