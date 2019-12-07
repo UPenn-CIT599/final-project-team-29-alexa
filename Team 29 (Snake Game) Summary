@@ -1,0 +1,30 @@
+Team 29 (Snake Game)
+
+Team Members: Alex Hui, Yuexin Xu, Jiaqi Lu
+
+Summary: The project we created was the traditional "Snake Game" where the player or user tries to eat the apple that shows up on the screen to grow the players' body. The goal of the game is for the user to eat as many apples as they can and grow the snakes length of body without hitting any walls or the snake's body itself. This game contains an introduction UI which allows the user to select from one of three game modes: (1) Single Player, (2) Two Player, and (3) Compete with Computer (AI).
+
+**Side Note** The original scope of this project was to create a dictionary Alexa Skill where the user would be able to get the definition and spelling of any word they desired. After investigation and testing, we decided to pivot the project to a Java game given that the Alexa Cloud and work required to build is a skill is quite complex and would not fit the scope of this project.
+
+Classes within this Project: Here is a list of the various classes within this Snake Game project.
+(1) AiDirectionDecider
+(2) Apple
+(3) BodyPart
+(4) GameDecider
+(5) MainMenu
+(6) PennDraw
+(7) Player
+(8) PlayerDirectionStore
+(9) SnakeGame
+(10) VectorLocation
+
+Work Breakdown: Here is a breakdown of who did what in this project.
+
+(1) Early phase concept of project: Alex, Jiaqi, Yuexin
+(2) Alexa Skill investigation, scoping, and testing: Alex, Jiaqi
+(3) Snake Game Ideation, Investigation, & Brainstorm: Alex, Jiaqi, Yuexin
+(3) Foundational code for Snake Game: Jiaqi
+(4) UI, Main Menu, Snake Maneuvering Direction: Yuexin
+(5) QA, Testing, Code Improvements, README, Summary, Demo Video: Alex
+
+Link to Github Repo: https://github.com/UPenn-CIT599/final-project-team-29-alexa
