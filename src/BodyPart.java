@@ -1,5 +1,9 @@
 //QA conducted on 07 Dec by Alex Hui
 
+/**
+ * This BodyPart class contains code for the players within the snake game.
+ */
+
 public class BodyPart {
 //	int red = 255;
 //	int green = 0, blue = 0;
