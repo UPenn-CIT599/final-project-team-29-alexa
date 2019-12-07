@@ -1,7 +1,7 @@
 //QA conducted on 07 Dec by Alex Hui
 
 /**
- * AiDirectionDecider will contain code related with AI decide which direction to go
+ * AiDirectionDecider is a class that contains code related to which direction the AI (computer) will go during the game.
  */
 
 public class AiDirectionDecider {
