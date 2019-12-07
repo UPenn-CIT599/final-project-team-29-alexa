@@ -1,7 +1,7 @@
 //QA conducted on 07 Dec by Alex Hui
 
 /**
- * This BodyPart class contains code for the players within the snake game.
+ * This BodyPart class contains code for the body parts of the players within the snake game.
  */
 
 public class BodyPart {
