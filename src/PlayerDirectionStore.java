@@ -1,7 +1,8 @@
 //QA conducted on 07 Dec by Alex Hui
 
 /**
- * PlayerDirectionStore will store two players' current direction and update if there are key stored
+ * This PlayerDirectionStore class stores the two players' current direction in the game
+ * and updates the game/drawing when a keystroke is stored
  */
 public class PlayerDirectionStore {
     private char player1Direction = 'a';
