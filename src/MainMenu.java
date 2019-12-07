@@ -1,8 +1,8 @@
 /**
- * Class MainMenu will be the entry point UI for Snake Game, it will provide the three options:
+ * This MainMenu class acts as the main entry point UI selection screen for the Snake Game, it contains three options:
  * 1. Single Player
  * 2. Two Players
- * 3. Compete with Computer
+ * 3. Compete with Computer (Compete with AI)
  */
 
 public class MainMenu {
