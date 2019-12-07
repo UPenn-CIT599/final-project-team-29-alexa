@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Player class will store all the information related with player, specifically, the body part.
+ * This Player class stores all the information related with player, specifically, the body part.
  * It will keep updating the player's location and draw body.
  */
 
