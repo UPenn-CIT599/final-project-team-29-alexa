@@ -1,3 +1,4 @@
+//QA conducted on 07 Dec by Alex Hui
 
 public class BodyPart {
 //	int red = 255;
