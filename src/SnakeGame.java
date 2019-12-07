@@ -2,6 +2,12 @@
 
 import java.util.Random;
 
+/**
+ * This SnakeGame class contains code that starts the game and initializes the game canvas.
+ * This acts as the entry point for the game and brings all the various Java classes of Snake Game together
+ * to produce the game.
+ */
+
 public class SnakeGame {
 
 	public static void main(String[] args) {
