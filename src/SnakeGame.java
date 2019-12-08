@@ -41,7 +41,7 @@ public class SnakeGame {
 			Player player1 = new Player(new int[]{255, 0, 0}, true);
 			// second player with color blue
 			Player player2 = new Player(new int[]{0, 0, 255}, false);
-			Apple apple = new Apple(random.nextInt(51), random.nextInt(51));
+			Apple apple = new Apple(2 + random.nextInt(49), 2 + random.nextInt(49));
 			PlayerDirectionStore directionStore = new PlayerDirectionStore();
 			GameDecider decider = new GameDecider(isSingerPlayer(mode));
 			AiDirectionDecider aiDecider = new AiDirectionDecider();
@@ -89,7 +89,7 @@ public class SnakeGame {
 					if (!player2.isHeadLocation(apple.getxCoor(), apple.getyCoor())) {
 						player2.removeTail();
 					} else {
-						apple = new Apple(random.nextInt(51), random.nextInt(51));
+						apple = new Apple(2 + random.nextInt(49), 2 + random.nextInt(49));
 					}
 				}
 				PennDraw.advance();
