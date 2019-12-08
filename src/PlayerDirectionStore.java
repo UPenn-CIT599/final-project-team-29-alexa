@@ -5,8 +5,8 @@
  * and updates the game/drawing when a keystroke is stored
  */
 public class PlayerDirectionStore {
-    private char player1Direction = 'a';
-    private char player2Direction = 'j';
+    char player1Direction = 'a';
+    char player2Direction = 'j';
 
     public int[] getPlayer1Direction()  {
        switch (this.player1Direction) {
